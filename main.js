@@ -32,6 +32,23 @@ function getReviews(appid, options) {
             reviews.printResults(result, document.getElementById('reviews'));
             reviews.printSummary(result, document.getElementById('summary'));
             updateHistory();
+
+            let languages = {};
+            result.reviews.forEach(r => {
+                console.log(r.language);
+                if (typeof languages[r.language] === 'undefined') {
+                    languages[r.language] = 0;
+                }
+                languages[r.language] += 1;
+            });
+
+            Object.keys(languages).forEach(lang => {
+                console.log(`${lang} : ${parseInt(languages[lang]) / result.reviews.length}`);
+            });
+            // document.getElementById('summary').insertAdjacentHTML('beforeend', 
+            //     `${Object.keys(languages).forEach(lang => {
+            //         `${lang} : ${parseInt(languages[lang]) / result.reviews.length}`
+            //     })}`);
         });
 }
 
@@ -51,7 +68,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             let appid = document.getElementById('input_appid').value;
             let options = {
                 filter:        getSelectValue('input_filter'),
-                lang:          getSelectValue('input_lang'),
+                language:      getSelectValue('input_lang'),
                 review_type:   getSelectValue('input_reviewtype'),
                 purchase_type: getSelectValue('input_purchasetype'),
                 offset:        0,
@@ -75,7 +92,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     if (appid !== null) {
         let options = {
             filter:        findGetParameter('filter'),
-            lang:          findGetParameter('lang'),
+            language:      findGetParameter('lang'),
             review_type:   findGetParameter('reviewtype'),
             purchase_type: findGetParameter('purchasetype'),
             offset:        findGetParameter('offset'),

@@ -13,7 +13,7 @@ const reviews = {
         var url = getBaseUrl(appid);
         url = appendCursor(url, cursor);
         url = appendOptions(url, options);
-        // console.log(url);
+        console.log(url);
 
         if (typeof result === 'undefined') {
             result = {
@@ -29,7 +29,7 @@ const reviews = {
                     return;
                 }
                 response.json().then(data => {
-                    // console.log(data);
+                    console.log(data);
 
                     if (typeof data.query_summary.review_score !== 'undefined') {
                         result.summary = {
@@ -69,17 +69,19 @@ const reviews = {
         const nlregex = /\n/gmi;
         result.reviews.forEach((res, count) => {
             el.insertAdjacentHTML('beforeend', `
-                <div>
-                    ${res.voted_up 
-                        ? `<h2 class="recommended">(${count}) Recommended</h2>` 
-                        : `<h2 class="recommended_not">(${count}) Not recommended</h2>`}
-                    <dl>
-                        <dt>Author</dt>
-                        <dd>${res.author.steamid}</dd>
-                        <dt>Playtime</dt>
-                        <dd>${Math.round((res.author.playtime_forever / 60) * 10) / 10} hours</dd>
-                    </dl>
-                    <div>${bbCodeParser.parse(res.review.replace(nlregex, '<br/>'))}</div>
+                <div class="review">
+                    <div class="review_head ${res.voted_up ? '' : 'dislike'}">
+                        <img src="${res.voted_up 
+                            ? `thumb-up.svg` 
+                            : `thumb-down.svg`}" />
+                        <dl>
+                            <dt>Author</dt>
+                            <dd>${res.author.steamid}</dd>
+                            <dt>Playtime</dt>
+                            <dd>${Math.round((res.author.playtime_forever / 60) * 10) / 10} hours</dd>
+                        </dl>
+                    </div>
+                    <div class="review_body">${bbCodeParser.parse(res.review.replace(nlregex, '<br/>'))}</div>
                 </div>
             `);
         });
@@ -103,7 +105,7 @@ const reviews = {
 
 function getBaseUrl(appid) {
     const proxyurl = "https://pacific-anchorage-38173.herokuapp.com/";
-    return `${proxyurl}http://store.steampowered.com/appreviews/${appid}?json=1`;
+    return `${proxyurl}https://store.steampowered.com/appreviews/${appid}?json=1`;
 }
 
 function appendCursor(url, cursor) {
