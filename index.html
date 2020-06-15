@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script type="module" src="main.js"></script>
+
+<style>
+dl {
+  width: 100%;
+  padding: 0;
+  margin: 0 0 1em 0;
+}
+dt {
+  float: left;
+  clear: left;
+  margin-right: 1em;
+  font-weight: bold;
+}
+dd {
+  margin-left: 0px;
+}
+.recommended_not {
+    color: red;
+}
+</style>
+</head>
+<body>
+    <div class="input">
+        <label for="input_appid">App ID:</label>
+        <input type="text" id="input_appid" name="input_appid" size="32" />
+
+        <label for="input_filter">Filter:</label>
+        <select name="input_filter" id="input_filter">
+        <option value="all">All</option>
+        <option value="recent">Recent</option>
+        <option value="updated">Updated</option>
+        </select>
+
+        <label for="input_lang">Language:</label>
+        <select name="input_lang" id="input_lang">
+        <option value="all">All</option>
+        <option value="schinese">Simplified Chinese</option>
+        <option value="tchinese">Traditional Chinese</option>
+        <option value="japanese">Japanese</option>
+        <option value="korean">Korean</option>
+        <option value="thai">Thai</option>
+        <option value="bulgarian">Bulgarian</option>
+        <option value="czech">Czech</option>
+        <option value="danish">Danish</option>
+        <option value="german">German</option>
+        <option value="english">English</option>
+        <option value="spanish">Spanish - Spain</option>
+        <option value="latam">Spanish - Latin America</option>
+        <option value="greek">Greek</option>
+        <option value="french">French</option>
+        <option value="italian">Italian</option>
+        <option value="hungarian">Hungarian</option>
+        <option value="dutch">Dutch</option>
+        <option value="norwegian">Norwegian</option>
+        <option value="polish">Polish</option>
+        <option value="portugese">Portugese</option>
+        <option value="brazilian">Portugese - Brazilian</option>
+        <option value="romanian">Romanian</option>
+        <option value="russian">Russian</option>
+        <option value="finnish">Finnish</option>
+        <option value="swedish">Swedish</option>
+        <option value="turkish">Turkish</option>
+        <option value="vietnamese">Vietnamese</option>
+        <option value="ukrainian">Ukrainian</option>
+        </select>
+
+        <label for="input_reviewtype">Review type:</label>
+        <select name="input_reviewtype" id="input_reviewtype">
+        <option value="all">All</option>
+        <option value="positive">Positive</option>
+        <option value="negative">Negative</option>
+        </select>
+
+        <label for="input_purchasetype">Purchase type:</label>
+        <select name="input_purchasetype" id="input_purchasetype">
+        <option value="all">All</option>
+        <option value="steam">Steam</option>
+        <option value="non_steam_purchase">Non-Steam</option>
+        </select>
+
+        <input type="button" id="input_submit" name="input_submit" value="Get reviews" />
+        <input type="button" id="history_clear" name="history_clear" value="Clear history" />
+    </div>
+    <div id="history"></div>
+    <div id="log"></div>
+    <div id="summary"></div>
+    <div id="reviews"></div>
+</body>
+</html>

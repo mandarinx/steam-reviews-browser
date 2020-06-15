@@ -1,0 +1,16 @@
+{
+  "name": "steam-reviews-browser",
+  "version": "1.0.0",
+  "description": "Print Steam reviews in a more readable manner. Useful for when doing research.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "./node_modules/local-web-server/bin/cli.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Thomas Viktil",
+  "license": "ISC",
+  "dependencies": {
+    "js-bbcode-parser": "^3.0.4",
+    "local-web-server": "^4.2.1"
+  }
+}
