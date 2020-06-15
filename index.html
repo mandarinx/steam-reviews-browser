@@ -20,6 +20,7 @@
             font-weight: 500;
         }
         dd {
+            margin-left: 1em;
         }
         .recommended_not {
             color: red;
@@ -31,7 +32,7 @@
             line-height: 1.5em;
             margin: 1em 0;
         }
-        .reviews {
+        .reviews, .summary {
             max-width: 45em;
             margin: 0 auto;
         }
@@ -54,6 +55,38 @@
         .dislike {
             background-color: #ffc1c1;
         }
+        .summary {
+            margin-top: 2em;
+            margin-bottom: 3em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .summary dl {
+            display: grid;
+            grid-template-columns: 6em auto;
+            max-width: 50%;
+            align-content: start;
+        }
+        ul.languages {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+        ul.languages li {
+            display: block;
+            position: relative;
+            font-size: 0.8em;
+            font-weight: 100;
+            margin-bottom: 0.2em;
+        }
+        ul.languages li span {
+            height: 2px;
+            background-color: red;
+            display: block;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+        }
     </style>
 </head>
 <body>
@@ -71,34 +104,34 @@
         <label for="input_lang">Language:</label>
         <select name="input_lang" id="input_lang">
         <option value="all">All</option>
-        <option value="zh-CN">Simplified Chinese</option>
-        <option value="zh-TW">Traditional Chinese</option>
-        <option value="ja">Japanese</option>
-        <option value="ko">Korean</option>
-        <option value="th">Thai</option>
-        <option value="bg">Bulgarian</option>
-        <option value="cs">Czech</option>
-        <option value="da">Danish</option>
-        <option value="de">German</option>
-        <option value="en">English</option>
-        <option value="es">Spanish - Spain</option>
-        <option value="es-419">Spanish - Latin America</option>
-        <option value="el">Greek</option>
-        <option value="fr">French</option>
-        <option value="it">Italian</option>
-        <option value="hu">Hungarian</option>
-        <option value="nl">Dutch</option>
-        <option value="no">Norwegian</option>
-        <option value="pl">Polish</option>
-        <option value="pt">Portugese</option>
-        <option value="pt-BR">Portugese - Brazilian</option>
-        <option value="ro">Romanian</option>
-        <option value="ru">Russian</option>
-        <option value="fi">Finnish</option>
-        <option value="sv">Swedish</option>
-        <option value="tr">Turkish</option>
-        <option value="vn">Vietnamese</option>
-        <option value="uk">Ukrainian</option>
+        <option value="schinese">Simplified Chinese</option>
+        <option value="tchinese">Traditional Chinese</option>
+        <option value="japanese">Japanese</option>
+        <option value="korean">Korean</option>
+        <option value="thai">Thai</option>
+        <option value="bulgarian">Bulgarian</option>
+        <option value="czech">Czech</option>
+        <option value="danish">Danish</option>
+        <option value="german">German</option>
+        <option value="english">English</option>
+        <option value="spanish">Spanish - Spain</option>
+        <option value="latam">Spanish - Latin America</option>
+        <option value="greek">Greek</option>
+        <option value="french">French</option>
+        <option value="italian">Italian</option>
+        <option value="hungarian">Hungarian</option>
+        <option value="dutch">Dutch</option>
+        <option value="norwegian">Norwegian</option>
+        <option value="polish">Polish</option>
+        <option value="portugese">Portugese</option>
+        <option value="brazilian">Portugese - Brazilian</option>
+        <option value="romanian">Romanian</option>
+        <option value="russian">Russian</option>
+        <option value="finnish">Finnish</option>
+        <option value="swedish">Swedish</option>
+        <option value="turkish">Turkish</option>
+        <option value="vietnamese">Vietnamese</option>
+        <option value="ukrainian">Ukrainian</option>
         </select>
 
         <label for="input_reviewtype">Review type:</label>
@@ -120,7 +153,7 @@
     </div>
     <div id="history"></div>
     <div id="log"></div>
-    <div id="summary"></div>
+    <div id="summary" class="summary"></div>
     <div id="reviews" class="reviews"></div>
 </body>
 </html>

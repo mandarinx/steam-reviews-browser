@@ -35,21 +35,23 @@ function getReviews(appid, options) {
 
             let languages = {};
             result.reviews.forEach(r => {
-                console.log(r.language);
                 if (typeof languages[r.language] === 'undefined') {
                     languages[r.language] = 0;
                 }
                 languages[r.language] += 1;
             });
 
+            let langHTML = '<ul class="languages">';
             Object.keys(languages).forEach(lang => {
-                console.log(`${lang} : ${parseInt(languages[lang]) / result.reviews.length}`);
+                langHTML += `<li><span style="width:${getPercentage(languages[lang], result.reviews.length)}"></span>${lang}</li>`;
             });
-            // document.getElementById('summary').insertAdjacentHTML('beforeend', 
-            //     `${Object.keys(languages).forEach(lang => {
-            //         `${lang} : ${parseInt(languages[lang]) / result.reviews.length}`
-            //     })}`);
+            langHTML += '</ul>';
+            document.getElementById('summary').insertAdjacentHTML('beforeend', langHTML);
         });
+}
+
+function getPercentage(value, max) {
+    return `${Math.floor((parseInt(value) / parseInt(max)) * 10000) / 100}%`;
 }
 
 function updateHistory() {
@@ -92,7 +94,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     if (appid !== null) {
         let options = {
             filter:        findGetParameter('filter'),
-            language:      findGetParameter('lang'),
+            language:      findGetParameter('language'),
             review_type:   findGetParameter('reviewtype'),
             purchase_type: findGetParameter('purchasetype'),
             offset:        findGetParameter('offset'),

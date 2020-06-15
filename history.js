@@ -35,7 +35,7 @@ const history = {
 	        `steam_review_search_${window.history_count}`, 
 	        `appid=${appid}`+
 	        `&filter=${options.filter}`+
-	        `&lang=${options.lang}`+
+	        `&language=${options.language}`+
 	        `&reviewtype=${options.review_type}`+
 	        `&purchasetype=${options.purchase_type}`+
 	        `&offset=${options.offset}`+

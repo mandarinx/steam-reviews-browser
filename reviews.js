@@ -45,7 +45,7 @@ const reviews = {
                         total_pages: result.summary.total_reviews == 0
                             ? '?' 
                             : Math.ceil(result.summary.total_reviews / options.num_per_page),
-                        page: parseInt(options.offset) + 1
+                        page: parseInt(options.offset)
                     });
 
                     result.reviews = result.reviews.concat(data.reviews);
